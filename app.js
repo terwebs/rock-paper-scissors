@@ -15,6 +15,9 @@ const userChoiceSpan = document.querySelector("#userChoice")
 const score1 = document.querySelector("#score1")
 const score2 = document.querySelector("#score2")
 
+const winnerSpan = document.querySelector("#winner")
+const loserSpan = document.querySelector("#loser")
+
 let userScore = 0;
 let computerScore = 0;
 
@@ -32,6 +35,7 @@ const clearStyles = () => {
     computerChoiceSpan.classList.remove('loser')
     userChoiceSpan.classList.remove("winner") 
     userChoiceSpan.classList.remove("loser")
+    winnerSpan.innerText = ""
 }
 
 const userWin = () =>{
@@ -44,6 +48,7 @@ const userWin = () =>{
     computerChoiceSpan.classList.add('loser')
     userChoiceSpan.classList.add("winner")
 
+    winnerSpan.innerText = "You win!"
 }
 
 const pcWin = () => {
@@ -55,6 +60,9 @@ const pcWin = () => {
 
     computerChoiceSpan.classList.add('winner')
     userChoiceSpan.classList.add("loser")
+
+    winnerSpan.innerText = "You lose!"
+
 }
 
 playBtn.addEventListener('click', () => {
@@ -98,8 +106,9 @@ const playRound = function(){
     if (user === "rock" || user === "paper" || user === "scissors"){
         if (user === "rock"){
             if (computer === "rock"){
-                console.log("tie")
                 clearStyles()
+                winnerSpan.innerText = "It's a Tie"
+                
 
             } else if (computer === "paper") {
                 pcWin()
@@ -114,8 +123,9 @@ const playRound = function(){
                 userWin()
     
             } else if (computer === "paper") {
-                console.log(`tie both used ${user}`)
+                
                 clearStyles()
+                winnerSpan.innerText = "It's a Tie"
             } else {
                 pcWin()
 
@@ -131,8 +141,9 @@ const playRound = function(){
                 userWin()
 
             } else {
-                console.log(`tie both used ${user}`)
                 clearStyles()
+                winnerSpan.innerText = "It's a Tie"
+                
             }
         }
     } else {
